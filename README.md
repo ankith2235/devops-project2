@@ -43,13 +43,3 @@ A full DevOps lifecycle implementation for **Abode Software** using
 - Runs application container
 
 ---
-
-## ⚙️ Step 1: Install Software via Ansible
-
-### Inventory
-```ini
-[jenkins]
-<jenkins-ip>
-
-[prod]
-<prod-ip>
