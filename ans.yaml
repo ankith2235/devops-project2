@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+    - script: master.sh
+
+- hosts: slaves
+  become: yes
+  tasks:
+    - script: slave.sh
