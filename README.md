@@ -1,46 +1,51 @@
-# 🚀 DevOps Capstone Project – End-to-End CI/CD Pipeline
+# DevOps Lifecycle Implementation – Abode Software
 
-This project implements a full DevOps lifecycle using AWS, Jenkins, GitHub, Ansible & Docker, following a multi-branch deployment workflow.
+This project implements a complete DevOps Lifecycle for **Abode Software**, based on the product code located at:  
+👉 https://github.com/hshar/website.git
+
+The project follows all five required specifications:
 
 ---
 
-## 🧩 Project Overview
+##  Objective
 
-### ✔ Objective
-Automate:
-- Code build
-- Testing deployment (develop branch)
-- Production deployment (master branch)
+To deploy the Abode Software website using:
+- Automated configuration management
+- Git workflow with branching
+- Jenkins CI/CD pipeline
+- Docker containerization
+- Multi-environment deployment (test + prod)
 
-### ✔ Core Stack
+---
+
+##  Tools Used
+
 | Tool | Purpose |
 |------|----------|
-| Git + GitHub | Version control |
-| Ansible | Automated installation |
-| Jenkins | CI/CD pipeline |
-| Docker | Packaging & deployment |
-| AWS EC2 | Infra for master + 2 slaves |
+| AWS EC2 | Infrastructure for master & slaves |
+| Ansible | Install required software automatically |
+| Git & GitHub | Version control + branching strategy |
+| Jenkins | Continuous Integration & Delivery |
+| Docker | Container packaging & runtime |
 
 ---
 
-## 🏗 AWS Architecture
+## 🏗 System Setup Overview
 
-| Server | Private IP | Public IP | Role |
-|--------|------------|-----------|------|
-| Master EC2 | ✔ | ✔ | Jenkins + Ansible |
-| Slave1 EC2 | ✔ | ✔ | Test deployment |
-| Slave2 EC2 | ✔ | ✔ | Production deployment |
-
-### Security
-Allow inbound:
-- SSH (22)
-- Jenkins UI (8080)
-- HTTP (80)
+| Machine | Role | Tools Installed |
+|----------|------|----------------|
+| Master EC2 | Jenkins Controller + Ansible | Jenkins, Docker, Java, Git, Python |
+| Slave1 | Test Server | Docker, Java |
+| Slave2 | Prod Server | Docker, Java |
 
 ---
 
-## 🧪 Git Branch Strategy
-| Branch | Build | Test Deploy (Slave1) | Prod Deploy (Slave2) |
-|--------|-------|----------------------|-----------------------|
-| develop | ✔ Yes | ✔ Yes | ❌ No |
-| master | ✔ Yes | ✔ Yes | ✔ Yes |
+##  Requirement 1 — Install Necessary Software Using Ansible
+
+### Tools installed by automation:
+- Java
+- Jenkins
+- Git
+- Docker
+- Python
+- Ansible (Master only)
