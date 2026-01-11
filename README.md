@@ -1,45 +1,46 @@
-# 🧑‍💻 DevOps CI/CD Implementation – Abode Software
+# 🚀 DevOps Capstone Project – End-to-End CI/CD Pipeline
 
-A full DevOps lifecycle implementation for **Abode Software** using  
-**Git, Jenkins, Docker, and Ansible**, based on the application deployed at:  
-🔗 https://github.com/hshar/website.git
+This project implements a full DevOps lifecycle using AWS, Jenkins, GitHub, Ansible & Docker, following a multi-branch deployment workflow.
 
 ---
 
-## 🎯 Project Requirements
+## 🧩 Project Overview
 
-- Automate installation of required tools using a configuration management tool
-- Implement Git workflow using multiple branches
-- Trigger CI/CD pipelines automatically upon code push
-- Run tests for all commits
-- Push code to production only from **master**
-- Containerize code and deploy using Docker
-- Define CI/CD stages through Jenkins Pipeline
+### ✔ Objective
+Automate:
+- Code build
+- Testing deployment (develop branch)
+- Production deployment (master branch)
 
----
-
-## 🏗️ Architecture Overview
-
-| Component | Purpose |
-|----------|----------|
-| GitHub | Code repository with `develop` & `master` branches |
-| Jenkins | CI/CD automation server |
-| Ansible | Install Jenkins, Docker, and dependencies |
-| Docker | Container runtime |
-| Prod Servers | Host running containerized application |
+### ✔ Core Stack
+| Tool | Purpose |
+|------|----------|
+| Git + GitHub | Version control |
+| Ansible | Automated installation |
+| Jenkins | CI/CD pipeline |
+| Docker | Packaging & deployment |
+| AWS EC2 | Infra for master + 2 slaves |
 
 ---
 
-## 🧱 Infrastructure Setup
+## 🏗 AWS Architecture
 
-### ✔ Jenkins Master
-- Jenkins
-- Java
-- Docker
-- Git
+| Server | Private IP | Public IP | Role |
+|--------|------------|-----------|------|
+| Master EC2 | ✔ | ✔ | Jenkins + Ansible |
+| Slave1 EC2 | ✔ | ✔ | Test deployment |
+| Slave2 EC2 | ✔ | ✔ | Production deployment |
 
-### ✔ Production Nodes
-- Docker installed
-- Runs application container
+### Security
+Allow inbound:
+- SSH (22)
+- Jenkins UI (8080)
+- HTTP (80)
 
 ---
+
+## 🧪 Git Branch Strategy
+| Branch | Build | Test Deploy (Slave1) | Prod Deploy (Slave2) |
+|--------|-------|----------------------|-----------------------|
+| develop | ✔ Yes | ✔ Yes | ❌ No |
+| master | ✔ Yes | ✔ Yes | ✔ Yes |
